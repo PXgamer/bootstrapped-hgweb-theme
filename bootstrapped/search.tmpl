@@ -1,0 +1,60 @@
+{header}
+<title>{repo|escape}: searching for {query|escape}</title>
+</head>
+<body>
+	
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#hg-nav">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand" href="/">hg Web</a>
+		</div>
+			<div class="collapse navbar-collapse" id="hg-nav">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="{url}help{sessionvars%urlparameter}">Help</a></li>
+				</ul>
+			</div>
+	  </div>
+	</nav>
+
+	<div id="content" class="container">
+
+		<h1>{repo|escape}</h1>
+		
+		<form id="search" class="form-search" action="{url}log">
+			{sessionvars%hiddenformentry}
+			<div class="input-append form-group">
+				<input class="form-control" name="rev" id="search1" type="text" placeholder="Author, revision, filename, or commit" value="{query|escape}" /></a>
+			</div>			
+		</form>
+		
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{url}">Commits</a></li>
+			<li><a href="{url}file">Files</a></li>
+		</ul>
+
+		<h3>Search results for '{query|escape}'</h3>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="age">Age</th>
+					<th class="author">Author</th>
+					<th class="description">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				{entries}
+				</tobyd>
+		</table>
+
+		<a class="btn btn-default" href="{url}log{morevars%urlparameter}#more" name="more">More Results</a>
+
+	</div>
+
+{footer}
